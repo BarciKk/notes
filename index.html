@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Semi+Condensed:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <title>Note app</title>
+  </head>
+  <body>
+    <div class="notes-container">
+      <div class="tools">
+        <box-icon name="dots-horizontal-rounded" color="#9ec862"></box-icon>
+        <box-icon name="plus" class="add-note-button" color="#9ec862"></box-icon>
+        <box-icon name="cog" type="solid" color="#9ec862"></box-icon>
+        <box-icon name="x" class="close-note" color="#9BA4A3"/></box-icon>
+      </div>
+      <section>
+        <div class="note" >
+        </div>
+        <button class="add-note-button">Add new note</button>
+      </section>
+    </div>
+    <div class="modal">
+      <section class="modal-container">
+        <div class="modal-tools">
+          <box-icon
+            name="arrow-back"
+            class="arrow-back-modal"
+            color="#9ec862"
+            style="margin-right: auto"
+          ></box-icon>
+          <box-icon name='check' class="save-note" color="#9ec862"></box-icon>
+          <box-icon name="alarm" color="#9ec862" ></box-icon>
+        </div>
+        <div class="overlay">
+          <input
+            type="text"
+            maxlength="42"
+            placeholder="Title"
+            class="title-note"
+          />
+          <div class="dash"></div>
+          <textarea
+            class="note-text-holder"
+            placeholder="Inside of the note"
+            name="note"
+            cols="64"
+            rows="10"
+          ></textarea>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
