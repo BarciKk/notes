@@ -104,7 +104,7 @@ button:hover {
   border-radius: 6px;
   border: none;
   width: 100%;
-  opacity: 0.4;
+  opacity: 0.3;
   resize: none;
 }
 
@@ -126,7 +126,7 @@ button:hover {
 }
 @media screen and (min-width: 1024px) {
   .notes-container {
-    margin: 4em auto;
+    margin: 1em auto;
   }
 }
 /* Do pizdy ale wkurwial mnie scroll */
@@ -153,6 +153,6 @@ img {
   width: 100%;
   padding: 0.5em;
   border-radius: 0.5em;
-  background-color: rgba(226, 226, 226, 0.973);
+  background-color: rgba(239, 235, 235, 0.979);
   margin: 0.2em;
 }
