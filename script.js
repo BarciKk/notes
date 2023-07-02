@@ -1,10 +1,11 @@
 const addNewNoteButton = document.querySelectorAll(".add-note-button");
 const modal = document.querySelector(".modal");
 const backArrowModal = document.querySelector(".arrow-back-modal");
-const noteContainer = document.querySelector(".greeting-stuff");
+const noteContainer = document.querySelector(".note");
 const saveNote = document.querySelector(".save-note");
 const noteTitle = document.querySelector(".title-note");
 const noteValue = document.querySelector(".note-text-holder");
+
 let noteData = [];
 
 const addNewNote = () => {
@@ -23,7 +24,6 @@ const addNewNote = () => {
   noteTitle.value = "";
   noteValue.value = "";
 };
-console.log(noteData);
 const renderNotes = () => {
   noteContainer.textContent = "";
 
@@ -32,7 +32,7 @@ const renderNotes = () => {
     const titleElement = document.createElement("p");
     const dateElement = document.createElement("p");
 
-    noteDiv.className = "note-con";
+    noteDiv.className = "note-container";
     titleElement.className = "note-title-container";
     dateElement.className = "note-date-container";
 
