@@ -5,7 +5,6 @@ const noteContainer = document.querySelector(".greeting-stuff");
 const saveNote = document.querySelector(".save-note");
 const noteTitle = document.querySelector(".title-note");
 const noteValue = document.querySelector(".note-text-holder");
-
 let noteData = [];
 
 const addNewNote = () => {
@@ -19,6 +18,7 @@ const addNewNote = () => {
   };
   noteData.push(data);
 
+  saveToLocalStorage();
   renderNotes();
   noteTitle.value = "";
   noteValue.value = "";
@@ -46,6 +46,17 @@ const renderNotes = () => {
   toogleModal();
 };
 
+const saveToLocalStorage = () => {
+  localStorage.setItem("note", JSON.stringify(noteData));
+};
+const loadFromLocalStorage = () => {
+  const storedLocalData = localStorage.getItem("note");
+  if (storedLocalData) {
+    noteData = JSON.parse(storedLocalData);
+    renderNotes();
+    toogleModal();
+  }
+};
 const toogleModal = () => {
   modal.style.display = modal.style.display === "block" ? "none" : "block";
 };
@@ -55,3 +66,4 @@ addNewNoteButton.forEach((button) => {
   button.addEventListener("click", toogleModal);
 });
 backArrowModal.addEventListener("click", toogleModal);
+window.addEventListener("load", loadFromLocalStorage);
