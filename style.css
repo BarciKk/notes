@@ -118,3 +118,22 @@ button:hover {
 .title-note:focus {
   outline: none;
 }
+
+.note-date-container {
+  font-size: 16px;
+  margin: 0;
+}
+
+.note-title-container {
+  font-size: 22px;
+  margin: 0;
+  color: rgb(92, 92, 92);
+}
+.note-con {
+  cursor: pointer;
+  width: 40em;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  background-color: rgba(226, 226, 226, 0.973);
+  margin: 0.5em;
+}

@@ -17,5 +17,5 @@ const formatDate = () => {
   let formatedMin = min < 10 ? `0${min}` : min;
   let formatedDay = day < 10 ? `0${day}` : day;
 
-  return `${formatedDay} ${formatedHours}:${formatedMin}`;
+  return `${formatedDay}, ${formatedHours}:${formatedMin}`;
 };
