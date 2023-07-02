@@ -22,7 +22,7 @@ body {
 .notes-container {
   background-color: white;
   text-align: left;
-  margin: 10em auto;
+  margin: 7em auto;
   max-width: 850px;
   padding: 1em;
   display: block;
@@ -38,7 +38,11 @@ box-icon {
   margin-left: auto;
 }
 .note {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   padding: 1em;
+  width: 100%;
 }
 
 section {
@@ -48,7 +52,7 @@ section {
   color: #9b9c9c;
 }
 button {
-  margin-top: 15px;
+  margin-top: 5px;
   cursor: pointer;
   font-size: 24px;
   padding: 0.5em 2.25em;
@@ -72,12 +76,13 @@ button:hover {
 .modal-container > input {
   background-color: transparent;
 }
-.overlay {
+.note-content {
   width: 96%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
+
 .title-note {
   background-color: transparent;
   border: none;
@@ -85,7 +90,7 @@ button:hover {
   padding-left: 0.5em;
 }
 .dash {
-  border: 0.5px solid #9b9c9c;
+  border: 1px solid #9b9c9c;
   width: 100%;
   margin: 0.4em auto;
 }
@@ -98,6 +103,7 @@ button:hover {
   align-self: center;
   border-radius: 6px;
   border: none;
+  width: 100%;
   opacity: 0.4;
   resize: none;
 }
@@ -105,16 +111,25 @@ button:hover {
 .modal-container {
   padding: 0.5em;
   max-width: 700px;
-  margin: 10em auto;
+  margin: 8em auto;
   background-color: #ffffff;
   border-radius: 0.5em;
 }
 
-@media screen and (max-width: 750px) {
-  .note-text-holder {
-    width: 96%;
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 24px;
+  }
+  .notes-container {
+    margin: 5em auto;
   }
 }
+@media screen and (min-width: 1024px) {
+  .notes-container {
+    margin: 4em auto;
+  }
+}
+/* Do pizdy ale wkurwial mnie scroll */
 .title-note:focus {
   outline: none;
 }
@@ -129,11 +144,15 @@ button:hover {
   margin: 0;
   color: rgb(92, 92, 92);
 }
-.note-con {
+img {
+  max-width: 60%;
+}
+.note-container {
   cursor: pointer;
-  width: 40em;
+  max-width: 40em;
+  width: 100%;
   padding: 0.5em;
   border-radius: 0.5em;
   background-color: rgba(226, 226, 226, 0.973);
-  margin: 0.5em;
+  margin: 0.2em;
 }
