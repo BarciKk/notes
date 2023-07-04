@@ -1,6 +1,7 @@
 const addNewNoteButton = document.querySelectorAll(".add-note-button");
 const modal = document.querySelector(".modal");
 const backArrowModal = document.querySelector(".arrow-back-modal");
+const note = document.querySelector(".note");
 const noteContainer = document.querySelector(".note");
 const saveNote = document.querySelector(".save-note");
 const noteTitle = document.querySelector(".title-note");
@@ -27,7 +28,7 @@ const addNewNote = () => {
 const renderNotes = () => {
   noteContainer.textContent = "";
 
-  noteData.forEach(({ title, date }) => {
+  noteData.forEach(({ title, date, id }) => {
     const noteDiv = document.createElement("div");
     const titleElement = document.createElement("p");
     const dateElement = document.createElement("p");
@@ -41,21 +42,34 @@ const renderNotes = () => {
 
     noteDiv.appendChild(titleElement);
     noteDiv.appendChild(dateElement);
+    noteDiv.addEventListener("dblclick", () => deleteNote(id));
+
     noteContainer.appendChild(noteDiv);
   });
   toogleModal();
 };
 
 const saveToLocalStorage = () => {
-  localStorage.setItem("note", JSON.stringify(noteData));
+  localStorage.setItem("data", JSON.stringify(noteData));
 };
 const loadFromLocalStorage = () => {
-  const storedLocalData = localStorage.getItem("note");
+  const storedLocalData = localStorage.getItem("data");
   if (storedLocalData) {
     noteData = JSON.parse(storedLocalData);
     renderNotes();
     toogleModal();
   }
+};
+
+const deleteNote = (id) => {
+  const index = noteData.findIndex((entity) => entity.id === id);
+
+  if (index === -1) return;
+
+  noteData.splice(index, 1);
+  note.children[index].remove();
+
+  saveToLocalStorage();
 };
 const toogleModal = () => {
   modal.style.display = modal.style.display === "block" ? "none" : "block";
@@ -67,3 +81,5 @@ addNewNoteButton.forEach((button) => {
 });
 backArrowModal.addEventListener("click", toogleModal);
 window.addEventListener("load", loadFromLocalStorage);
+
+//TODO:Figre out how to display image and text after deleting all the notes
