@@ -56,11 +56,14 @@ const loadFromLocalStorage = () => {
   const storedLocalData = localStorage.getItem("data");
   if (storedLocalData) {
     noteData = JSON.parse(storedLocalData);
-    renderNotes();
-    toogleModal();
+    if (noteData.length > 0) {
+      renderNotes();
+      toogleModal();
+    } else {
+      localStorage.removeItem("data");
+    }
   }
 };
-
 const deleteNote = (id) => {
   const index = noteData.findIndex((entity) => entity.id === id);
 
@@ -81,5 +84,3 @@ addNewNoteButton.forEach((button) => {
 });
 backArrowModal.addEventListener("click", toogleModal);
 window.addEventListener("load", loadFromLocalStorage);
-
-//TODO:Figre out how to display image and text after deleting all the notes
