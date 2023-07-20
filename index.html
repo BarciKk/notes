@@ -31,6 +31,7 @@
     </div>
     <div class="modal">
       <section class="modal-container">
+        <div class="note-creator">
         <div class="modal-tools">
           <box-icon
             name="arrow-back"
@@ -56,6 +57,35 @@
             cols="64"
             rows="10"
           ></textarea>
+        </div>
+      </div>
+        <div class="show-created-note">
+          <div class="modal-tools">
+          <box-icon
+            name="arrow-back"
+            class="arrow-back-modal"
+            color="#9ec862"
+            style="margin-right: auto"
+          ></box-icon>
+          <box-icon name='check' class="save-note"  color="#9ec862"></box-icon>
+          <box-icon name="alarm" color="#9ec862" ></box-icon>
+        </div>
+          <input 
+          type="text"
+          maxlength="42"
+          placeholder="Title will apear here"
+          class="title-note"
+          id="title-input" 
+        />
+        <div class="dash"></div>
+        <textarea
+          class="note-text-holder"
+          id="note-description"
+          placeholder="Note description will apear here"
+          name="note"
+          cols="64"
+          rows="10"
+        ></textarea>
         </div>
       </section>
     </div>

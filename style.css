@@ -148,6 +148,8 @@ img {
   max-width: 60%;
 }
 .note-container {
+  display: flex;
+  flex-direction: column;
   cursor: pointer;
   max-width: 40em;
   width: 100%;
@@ -155,4 +157,7 @@ img {
   border-radius: 0.5em;
   background-color: rgba(239, 235, 235, 0.979);
   margin: 0.2em;
+}
+#title-input {
+  width: 100%;
 }
