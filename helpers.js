@@ -3,16 +3,8 @@ import {
   displayCreatedNoteModal,
   modal,
 } from "./domElements.js";
+import { days } from "./utils.js";
 
-const days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
 const formatDate = () => {
   const date = new Date();
   let hours = date.getHours();
@@ -25,7 +17,6 @@ const formatDate = () => {
 
   return `${formatedDay}, ${formatedHours}:${formatedMin}`;
 };
-const errorMessage = "You have to add at least title !";
 
 const toogleCreatorModal = () => {
   modal.style.display = modal.style.display === "block" ? "none" : "block";
@@ -38,4 +29,4 @@ const toogleCreatorModal = () => {
   }
 };
 
-export { formatDate, errorMessage, toogleCreatorModal };
+export { formatDate, toogleCreatorModal };

@@ -1,7 +1,8 @@
-import { errorMessage, formatDate, toogleCreatorModal } from "./helpers.js";
+import { formatDate, toogleCreatorModal } from "./helpers.js";
+import { HOLD_TIMER_DURATION, errorMessage } from "./utils.js";
 import {
   noteTitle,
-  noteValue,
+  noteContent,
   noteContainer,
   note,
   saveNote,
@@ -19,24 +20,26 @@ let holdTimer;
 
 const addNewNote = () => {
   if (noteTitle.value === "") {
-    noteValue.textContent = errorMessage;
+    noteContent.textContent = errorMessage;
     return;
   }
+
   const formatedDate = formatDate();
-  const data = {
+  const newNote = {
     id: Math.floor(Math.random() * 100),
     title: noteTitle.value,
-    value: noteValue.value,
+    value: noteContent.value,
     date: formatedDate,
   };
-  noteData.push(data);
-  noteValue.value = "";
+  noteData.push(newNote);
+  noteContent.value = "";
 
   saveToLocalStorage();
   renderNotes();
   noteTitle.value = "";
-  noteValue.value = "";
+  noteContent.value = "";
 };
+
 const renderNotes = () => {
   noteContainer.textContent = "";
 
@@ -53,12 +56,11 @@ const renderNotes = () => {
     titleElement.textContent = title;
     dateElement.textContent = date;
 
-    noteDiv.appendChild(titleElement);
-    noteDiv.appendChild(dateElement);
+    noteDiv.append(titleElement, dateElement);
     noteDiv.addEventListener("mousedown", () => {
       holdTimer = setTimeout(() => {
         deleteNote(id);
-      }, 300);
+      }, HOLD_TIMER_DURATION);
     });
 
     noteDiv.addEventListener("mouseup", () => {
