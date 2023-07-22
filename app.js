@@ -1,19 +1,27 @@
-const addNewNoteButton = document.querySelectorAll(".add-note-button");
-const modal = document.querySelector(".modal");
-const backArrowModal = document.querySelectorAll(".arrow-back-modal");
-const note = document.querySelector(".note");
-const noteContainer = document.querySelector(".note");
-const saveNote = document.querySelector(".save-note");
-const noteTitle = document.querySelector(".title-note");
-const noteValue = document.querySelector(".note-text-holder");
-const noteCreatorModal = document.querySelector(".note-creator");
-const displayCreatedNoteModal = document.querySelector(".show-created-note");
+import { errorMessage, formatDate, toogleCreatorModal } from "./helpers.js";
+import {
+  noteTitle,
+  noteValue,
+  noteContainer,
+  note,
+  saveNote,
+  addNewNoteButton,
+  backArrowModal,
+  modal,
+  noteCreatorModal,
+  displayCreatedNoteModal,
+  textAreaDescription,
+  titleInput,
+} from "./domElements.js";
 
 let noteData = [];
 let holdTimer;
 
 const addNewNote = () => {
-  if (noteTitle.value === "") return;
+  if (noteTitle.value === "") {
+    noteValue.textContent = errorMessage;
+    return;
+  }
   const formatedDate = formatDate();
   const data = {
     id: Math.floor(Math.random() * 100),
@@ -22,6 +30,7 @@ const addNewNote = () => {
     date: formatedDate,
   };
   noteData.push(data);
+  noteValue.value = "";
 
   saveToLocalStorage();
   renderNotes();
@@ -61,6 +70,41 @@ const renderNotes = () => {
   toogleCreatorModal();
 };
 
+const deleteNote = (id) => {
+  const index = noteData.findIndex((entity) => entity.id === id);
+
+  if (index === -1) return;
+
+  noteData.splice(index, 1);
+  note.children[index].remove();
+
+  saveToLocalStorage();
+};
+const toogleDisplayCreatedNoteModal = (id) => {
+  modal.style.display = modal.style.display === "block" ? "none" : "block";
+
+  if (modal.style.display === "block") {
+    noteCreatorModal.style.display = "none";
+    displayCreatedNoteModal.style.display = "block";
+
+    const clickedNote = noteData.find((note) => note.id === id);
+    if (clickedNote) {
+      const { title, value } = clickedNote;
+      titleInput.value = title;
+      textAreaDescription.value = value;
+    }
+  } else {
+    displayCreatedNoteModal.style.display = "none";
+  }
+};
+noteContainer.addEventListener("click", (event) => {
+  const clickedNote = event.target.closest(".note-container");
+  if (clickedNote) {
+    const id = parseInt(clickedNote.dataset.noteId, 10);
+    toogleDisplayCreatedNoteModal(id);
+  }
+});
+
 const saveToLocalStorage = () => {
   localStorage.setItem("data", JSON.stringify(noteData));
 };
@@ -76,67 +120,15 @@ const loadFromLocalStorage = () => {
     }
   }
 };
-const deleteNote = (id) => {
-  const index = noteData.findIndex((entity) => entity.id === id);
-
-  if (index === -1) return;
-
-  noteData.splice(index, 1);
-  note.children[index].remove();
-
-  saveToLocalStorage();
-};
-
-const toogleCreatorModal = () => {
-  modal.style.display = modal.style.display === "block" ? "none" : "block";
-  if (modal.style.display === "block") {
-    noteCreatorModal.style.display = "block";
-    displayCreatedNoteModal.style.display = "none";
-  } else {
-    noteCreatorModal.style.display = "none";
-    displayCreatedNoteModal.style.display = "none";
-  }
-};
-
-const toogleDisplayCreatedNoteModal = (id) => {
-  modal.style.display = modal.style.display === "block" ? "none" : "block";
-
-  if (modal.style.display === "block") {
-    noteCreatorModal.style.display = "none";
-    displayCreatedNoteModal.style.display = "block";
-
-    const titleInput = document.getElementById("title-input");
-    const textAreaDescription = document.getElementById("note-description");
-
-    const clickedNote = noteData.find((note) => note.id === id);
-    if (clickedNote) {
-      const { title, value } = clickedNote;
-      titleInput.value = title;
-      textAreaDescription.value = value;
-    }
-  } else {
-    displayCreatedNoteModal.style.display = "none";
-  }
-};
-
-noteContainer.addEventListener("click", (event) => {
-  const clickedNote = event.target.closest(".note-container");
-  if (clickedNote) {
-    const id = parseInt(clickedNote.dataset.noteId, 10);
-    toogleDisplayCreatedNoteModal(id);
-  }
-});
 
 saveNote.addEventListener("click", addNewNote);
-
 addNewNoteButton.forEach((button) => {
   button.addEventListener("click", toogleCreatorModal);
 });
 
-backArrowModal.forEach((e) => {
-  e.addEventListener("click", () => {
+backArrowModal.forEach((backArrow) => {
+  backArrow.addEventListener("click", () => {
     modal.style.display = "none";
   });
 });
-
 window.addEventListener("load", loadFromLocalStorage);

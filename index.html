@@ -8,8 +8,9 @@
     rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
-    <script src="helpers.js"  defer  ></script>
-    <script src="script.js"  defer></script>
+    <script src="helpers.js"  defer  type="module" ></script>
+    <script src="app.js" type="module" defer></script>
+    <script src="domElements.js" type="module" defer></script>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <title>Note app</title>
   </head>
@@ -37,7 +38,6 @@
             name="arrow-back"
             class="arrow-back-modal"
             color="#9ec862"
-            style="margin-right: auto"
           ></box-icon>
           <box-icon name='check' class="save-note"  color="#9ec862"></box-icon>
           <box-icon name="alarm" color="#9ec862" ></box-icon>
@@ -65,7 +65,6 @@
             name="arrow-back"
             class="arrow-back-modal"
             color="#9ec862"
-            style="margin-right: auto"
           ></box-icon>
           <box-icon name='check' class="save-note"  color="#9ec862"></box-icon>
           <box-icon name="alarm" color="#9ec862" ></box-icon>
