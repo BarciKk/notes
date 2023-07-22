@@ -96,7 +96,6 @@ button:hover {
 }
 
 .note-text-holder {
-  text-transform: capitalize;
   font-size: 18px;
   background-color: #d8e2e2;
   font-weight: bolder;
@@ -129,7 +128,6 @@ button:hover {
     margin: 4em auto;
   }
 }
-/* Do pizdy ale wkurwial mnie scroll */
 .title-note:focus {
   outline: none;
 }
@@ -160,4 +158,7 @@ img {
 }
 #title-input {
   width: 100%;
+}
+.arrow-back-modal {
+  margin-right: auto;
 }
