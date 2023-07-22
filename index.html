@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="style.css" />
     <script src="helpers.js"  defer  type="module" ></script>
     <script src="app.js" type="module" defer></script>
+    <script src="utils.js" type="module" defer></script>
     <script src="domElements.js" type="module" defer></script>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <title>Note app</title>
@@ -51,7 +52,7 @@
           />
           <div class="dash"></div>
           <textarea
-            class="note-text-holder"
+            class="note-text-content"
             placeholder="Inside of the note"
             name="note"
             cols="64"
@@ -78,7 +79,7 @@
         />
         <div class="dash"></div>
         <textarea
-          class="note-text-holder"
+          class="note-text-content"
           id="note-description"
           placeholder="Note description will apear here"
           name="note"

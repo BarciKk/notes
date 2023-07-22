@@ -5,7 +5,7 @@ const note = document.querySelector(".note");
 const noteContainer = document.querySelector(".note");
 const saveNote = document.querySelector(".save-note");
 const noteTitle = document.querySelector(".title-note");
-const noteValue = document.querySelector(".note-text-holder");
+const noteContent = document.querySelector(".note-text-content");
 const noteCreatorModal = document.querySelector(".note-creator");
 const displayCreatedNoteModal = document.querySelector(".show-created-note");
 const titleInput = document.getElementById("title-input");
@@ -19,7 +19,7 @@ export {
   noteContainer,
   saveNote,
   noteTitle,
-  noteValue,
+  noteContent,
   noteCreatorModal,
   displayCreatedNoteModal,
   titleInput,
