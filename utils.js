@@ -9,5 +9,4 @@ const days = [
   "Saturday",
 ];
 const errorMessage = "You have to add at least title !";
-
 export { HOLD_TIMER_DURATION, days, errorMessage };
