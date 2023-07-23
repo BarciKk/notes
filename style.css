@@ -93,7 +93,8 @@ button:hover {
 .title-note {
   background-color: transparent;
   border: none;
-  text-overflow: ellipsis;
+  width: 100%;
+
   font-size: 24px;
   padding-left: 0.5em;
 }
@@ -128,7 +129,7 @@ button:hover {
     font-size: 24px;
   }
   .notes-container {
-    margin: 5em auto;
+    margin: 0 auto;
   }
 }
 @media screen and (min-width: 1024px) {
@@ -147,6 +148,8 @@ button:hover {
 
 .note-title-container {
   font-size: 22px;
+  text-overflow: ellipsis;
+  overflow: hidden;
   margin: 0;
   color: rgb(92, 92, 92);
 }
@@ -166,6 +169,7 @@ img {
 }
 #title-input {
   width: 100%;
+  text-overflow: ellipsis;
 }
 .arrow-back-modal {
   margin-right: auto;
