@@ -19,11 +19,12 @@ let noteData = [];
 let holdTimer;
 
 const addNewNote = () => {
-  if (noteTitle.value === "") {
+  let isTitleEmpty = noteTitle.value;
+  if (isTitleEmpty.trim() === "" || isTitleEmpty.includes(" ")) {
     noteContent.textContent = errorMessage;
     return;
   }
-
+  noteContent.value = "";
   const formatedDate = formatDate();
   const newNote = {
     id: Math.floor(Math.random() * 100),
