@@ -1,4 +1,4 @@
-import { formatDate, toogleCreatorModal } from "./helpers.js";
+import { formatDate, toggleCreatorModal } from "./helpers.js";
 import { HOLD_TIMER_DURATION, errorMessage } from "./utils.js";
 import {
   noteTitle,
@@ -25,12 +25,12 @@ const addNewNote = () => {
     return;
   }
   noteContent.value = "";
-  const formatedDate = formatDate();
+  const formattedDate = formatDate();
   const newNote = {
     id: Math.floor(Math.random() * 100),
     title: noteTitle.value,
     value: noteContent.value,
-    date: formatedDate,
+    date: formattedDate,
   };
   noteData.push(newNote);
   noteContent.value = "";
@@ -70,7 +70,7 @@ const renderNotes = () => {
 
     noteContainer.appendChild(noteDiv);
   });
-  toogleCreatorModal();
+  toggleCreatorModal();
 };
 
 const deleteNote = (id) => {
@@ -83,7 +83,7 @@ const deleteNote = (id) => {
 
   saveToLocalStorage();
 };
-const toogleDisplayCreatedNoteModal = (id) => {
+const toggleDisplayCreatedNoteModal = (id) => {
   modal.style.display = modal.style.display === "block" ? "none" : "block";
 
   if (modal.style.display === "block") {
@@ -104,7 +104,7 @@ noteContainer.addEventListener("click", (event) => {
   const clickedNote = event.target.closest(".note-container");
   if (clickedNote) {
     const id = parseInt(clickedNote.dataset.noteId, 10);
-    toogleDisplayCreatedNoteModal(id);
+    toggleDisplayCreatedNoteModal(id);
   }
 });
 
@@ -117,7 +117,7 @@ const loadFromLocalStorage = () => {
     noteData = JSON.parse(storedLocalData);
     if (noteData.length > 0) {
       renderNotes();
-      toogleCreatorModal();
+      toggleCreatorModal();
     } else {
       localStorage.removeItem("data");
     }
@@ -126,7 +126,7 @@ const loadFromLocalStorage = () => {
 
 saveNote.addEventListener("click", addNewNote);
 addNewNoteButton.forEach((button) => {
-  button.addEventListener("click", toogleCreatorModal);
+  button.addEventListener("click", toggleCreatorModal);
 });
 
 backArrowModal.forEach((backArrow) => {

@@ -11,14 +11,14 @@ const formatDate = () => {
   let min = date.getMinutes();
   let day = days[date.getDay()];
 
-  let formatedHours = hours < 10 ? `0${hours}` : hours;
-  let formatedMin = min < 10 ? `0${min}` : min;
-  let formatedDay = day < 10 ? `0${day}` : day;
+  let formattedHours = hours < 10 ? `0${hours}` : hours;
+  let formattedMin = min < 10 ? `0${min}` : min;
+  let formattedDay = day < 10 ? `0${day}` : day;
 
-  return `${formatedDay}, ${formatedHours}:${formatedMin}`;
+  return `${formattedDay}, ${formattedHours}:${formattedMin}`;
 };
 
-const toogleCreatorModal = () => {
+const toggleCreatorModal = () => {
   modal.style.display = modal.style.display === "block" ? "none" : "block";
   if (modal.style.display === "block") {
     noteCreatorModal.style.display = "block";
@@ -29,4 +29,4 @@ const toogleCreatorModal = () => {
   }
 };
 
-export { formatDate, toogleCreatorModal };
+export { formatDate, toggleCreatorModal };

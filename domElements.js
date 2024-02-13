@@ -10,6 +10,7 @@ const noteCreatorModal = document.querySelector(".note-creator");
 const displayCreatedNoteModal = document.querySelector(".show-created-note");
 const titleInput = document.getElementById("title-input");
 const textAreaDescription = document.getElementById("note-description");
+const removeNoteHandler = document.querySelector(".remove-note-handler");
 
 export {
   addNewNoteButton,
